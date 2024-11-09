@@ -1,0 +1,32 @@
+.drawer {
+  display: flex;
+}
+
+.drawer-nav {
+  width: 200px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+}
+
+.drawer-nav a:hover {
+  background-color: #555;
+}
+
+.drawer-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.content {
+  overflow-y: auto;
+  height: 100vh;
+}
