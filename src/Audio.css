@@ -1,0 +1,54 @@
+.audio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .status-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .status-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .status-indicator.recording {
+    background-color: red;
+  }
+  
+  .record-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .record-button.stop {
+    background-color: #dc3545;
+  }
+  
+  .record-button:hover {
+    opacity: 0.9;
+  }
+  

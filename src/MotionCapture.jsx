@@ -1,32 +1,42 @@
 import React, { useEffect, useState } from 'react';
-//import './MotionCapture.css';
+import './MotionCapture.css';
 
 const MotionCapture = () => {
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch videos for motion capture option
-    fetch('http://192.168.0.117:3000/videos') // Adjust to your server address
+    fetch('https://motioncontrol-doorlocksmart.pagekite.me/videos') // Adjust to your server address
       .then((response) => response.json())
-      .then((data) => setVideos(data))
-      .catch((error) => console.error('Error fetching videos:', error));
+      .then((data) => {
+        setVideos(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching videos:', error);
+        setLoading(false);
+      });
   }, []);
 
   return (
     <div className="motion-capture">
       <h2>Saved Videos</h2>
-      {videos.length === 0 ? (
+      {loading ? (
+        <p>Loading videos...</p>
+      ) : videos.length === 0 ? (
         <p>No videos available</p>
       ) : (
-        videos.map((video, index) => (
-          <div className="video-container" key={index}>
-            <h3>{video}</h3>
-            <video controls width="640" height="480">
-              <source src={`http://192.168.0.117:3000/videos/${video}`} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        ))
+        <div className="video-grid">
+          {videos.map((video, index) => (
+            <div className="video-container" key={index}>
+              <h3>{video}</h3>
+              <video controls width="100%">
+                <source src={`https://motioncontrol-doorlocksmart.pagekite.me/videos/${video}`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
